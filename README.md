@@ -1,5 +1,9 @@
 # electron-huya
 
+build文件夹是临时目录，在开发和打包的时候会生成
+打包得到的应用会放在release文件夹内
+使用concurrently同时运行多条命令（开发渲染进程和开发主进程）
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
