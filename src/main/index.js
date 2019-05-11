@@ -1,6 +1,7 @@
 import {app, BrowserWindow} from 'electron'; // eslint-disable-line
 import os from 'os';
 
+const isDevelopMent = process.env.NODE_ENV === 'development' || false;
 let mainWindow;
 
 function createWindow() {
@@ -13,6 +14,8 @@ function createWindow() {
     width: 550,
     webPreferences: {
       nodeIntegration: true,
+      //  只在开发环境下启动开发者工具
+      devTools: isDevelopMent
       // webSecurity: false,
     },
     // 无边框+透明
@@ -25,9 +28,9 @@ function createWindow() {
   // mainWindow.webContents.setUserAgent('Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.62 Mobile Safari/537.36');
 
   // 区分开发环境和生产环境
-  if(process.env.NODE_ENV === 'development'){
-    mainWindow.loadURL('http://localhost:5000')
-  }else {
+  if (isDevelopMent) {
+    mainWindow.loadURL('http://localhost:5000');
+  } else {
     mainWindow.loadFile('index.html');
   }
 
