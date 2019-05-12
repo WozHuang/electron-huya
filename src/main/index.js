@@ -1,4 +1,4 @@
-import {app, BrowserWindow} from 'electron'; // eslint-disable-line
+import {app, BrowserWindow, Menu} from 'electron'; // eslint-disable-line
 import os from 'os';
 
 const isDevelopMent = process.env.NODE_ENV === 'development' || false;
@@ -12,8 +12,9 @@ function createWindow() {
     height: 550,
     // useContentSize: true,
     width: 550,
+    // fullscreen: true,
     webPreferences: {
-      nodeIntegration: true,
+      nodeIntegration: false,
       //  只在开发环境下启动开发者工具
       devTools: isDevelopMent
       // webSecurity: false,
@@ -34,6 +35,9 @@ function createWindow() {
     mainWindow.loadFile('index.html');
   }
 
+  // 打开时直接最大化
+  // mainWindow.maximize();
+
   // ipc(mainWindow);
 
   mainWindow.on('closed', () => {
@@ -42,6 +46,11 @@ function createWindow() {
 }
 
 app.on('ready', () => {
+
+  // 去除electron默认的菜单栏
+  // 去除了以后需要使用electron-debug这个库帮开发环境绑定f12打开开发者工具的快捷键
+  Menu.setApplicationMenu(null);
+
   // 如果是linux系统的话要延迟启动，因为透明窗口在linux下有bug
   // 如果不用透明窗口可以去掉判断
   if (/linux/i.test(os.type())) {
