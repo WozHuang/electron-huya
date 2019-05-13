@@ -1,14 +1,15 @@
-/* eslint-disable no-console */
-import { BrowserWindow } from 'electron';
+/* eslint-disable */
+import electron, { BrowserWindow } from 'electron';
 import path from 'path';
+import electronDebug from 'electron-debug'
+electronDebug({showDevTools:false});
 
-require('electron-debug')({showDevTools:false});
+electron.app.on('ready', () => {
 
-require('electron').app.on('ready', () => {
-
-  // 安装vue-devtools
-  BrowserWindow.addDevToolsExtension(path.resolve(__dirname, '../../chromeExtension/react-devtools'));
-  console.log('React-devtools has been installed as browser extension.');
+  // 安装react-devtools
+  // 只需要安装一次，安装完成后注释掉这段代码
+  // BrowserWindow.addDevToolsExtension(path.resolve(__dirname, '../../chromeExtension/react-devtools'));
+  // console.log('React-devtools has been installed as browser extension.');
 });
 
 // Require `main` process to boot app

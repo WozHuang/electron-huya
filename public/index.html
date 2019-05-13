@@ -19,10 +19,14 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>React App</title>
+    <title>Electron Huya</title>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
+    <script>
+      // 全局赋值electron，因为在webpack打包后渲染线程内的require都被替换了
+      window.electron = require('electron')
+    </script>
     <div id="root"></div>
     <!--
       This HTML file is a template.

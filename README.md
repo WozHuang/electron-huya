@@ -16,6 +16,12 @@
 
 ## 其他
 
+使用chrome://inspect/可以进行调试，但是超级蛋疼。。。
+
+如果想要用webstorm调试的话可以使用webstorm的连接方式，还能够自动连接
+
+![webstorm-debug](./assets/debug.png)
+
 使用了concurrently同时运行多条命令（开发渲染进程和开发主进程）
 
 使用了 [create-react-app](https://www.html.cn/create-react-app) 作为基础模版，Tag `boilerplate` 可以作为 Electron + React的开发模版，因为 [electron-react-boilerplate](https://github.com/electron-react-boilerplate/electron-react-boilerplate) 有点太复杂了所以按照 [electron-vue](https://github.com/SimulatedGREG/electron-vue) 自己搭了一个，更多可以查看 [create-react-app](https://www.html.cn/create-react-app) 的文档 

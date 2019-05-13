@@ -14,6 +14,8 @@ function startMain() {
   return new Promise(resolve => {
     mainConfig.entry = [path.join(__dirname, '../src/main/index.dev.js')];
     mainConfig.mode = 'development';
+    mainConfig.devtool = "cheap-module-eval-source-map";
+
     const compiler = webpack(mainConfig);
 
     // 启动监听
@@ -46,6 +48,7 @@ function startMain() {
 //  启动electron主线程
 function startElectron() {
   const args = [
+    '--inspect=5858',
     path.join(__dirname, '../build/main.js')
   ];
 

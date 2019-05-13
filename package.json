@@ -9,7 +9,7 @@
     "build": "npm run build-react && npm run build-electron && npm run build-packager",
     "build-react": "react-app-rewired build",
     "build-electron": "webpack --config config/webpack.main.config.js",
-    "build-packager": "electron-packager build --out=release --overwrite --asar --icon=public/favicon.ico"
+    "build-packager": "electron-packager build --out=release --overwrite --asar --icon=public/favicon.png"
   },
   "homepage": ".",
   "dependencies": {
