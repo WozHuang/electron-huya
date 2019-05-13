@@ -23,7 +23,7 @@ yarn-debug.log*
 yarn-error.log*
 
 # release
-release/*
+/release
 
 # IDE
 .idea

@@ -1,5 +1,6 @@
 import {app, BrowserWindow, Menu} from 'electron'; // eslint-disable-line
 import os from 'os';
+import path from 'path';
 
 const isDevelopment = process.env.NODE_ENV === 'development' || false;
 let mainWindow;
@@ -25,6 +26,9 @@ function createWindow() {
     // frame: true,
     // transparent: false,
     // resizable: true,
+
+    // 设置图标，这里需要webpack 不 mock掉 __dirname 这个属性才行
+    icon: path.resolve(__dirname,isDevelopment?'../public/favicon.png':'favicon.png')
   });
 
   // 修改客户端发出请求的userAgent，在请求的时候用到

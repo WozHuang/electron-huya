@@ -9,8 +9,9 @@ module.exports = {
     path: path.resolve(__dirname, '../build')
   },
   node: {
-    __dirname: process.env.NODE_ENV !== 'production',
-    __filename: process.env.NODE_ENV !== 'production'
+    // 保证模块路径正确
+    __dirname: false,
+    __filename: false
   },
   resolve: {
     alias: {
