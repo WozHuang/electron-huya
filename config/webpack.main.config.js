@@ -12,6 +12,11 @@ module.exports = {
     __dirname: process.env.NODE_ENV !== 'production',
     __filename: process.env.NODE_ENV !== 'production'
   },
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, '../src')
+    }
+  },
   target: 'electron-main',
   plugins: []
 };
