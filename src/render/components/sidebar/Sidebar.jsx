@@ -4,7 +4,7 @@ import Logo from "@/render/components/logo/Logo";
 import {Icon} from "antd";
 import {connect} from "react-redux";
 import {toggleSidebar} from "@/render/store/setting/action";
-import {Link} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 
 class Sidebar extends React.Component {
   state = {
@@ -27,9 +27,11 @@ class Sidebar extends React.Component {
         <ul className={style["menu__wrapper"]}>
           {
             this.state.menuList.map(item => (
-              <Link to={item.path} key={item.name}>
-                <li className={style["menu__item"]}>{item.name}</li>
-              </Link>
+              <li className={style["menu__item"]}>
+                <NavLink exact to={item.path} key={item.name} activeClassName={style["current"]}>
+                  <span>{item.name}</span>
+                </NavLink>
+              </li>
             ))
           }
         </ul>
