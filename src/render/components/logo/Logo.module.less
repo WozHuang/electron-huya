@@ -1,0 +1,25 @@
+@import "~@/render/mixin.less";
+
+@logo-size: 32px;
+@name-size: 22px;
+
+.Logo-wrapper {
+  padding: 32px 16px;
+  background: @sidebar-logo-background;
+  .drag;
+  .flex(row, flex-start, center);
+
+  .Logo {
+    width: @logo-size;
+    height: @logo-size;
+    //.no-drag;
+  }
+
+  .name {
+    width: 0;
+    flex: 1;
+    font-size: @name-size;
+    text-align: center;
+    //.no-drag;
+  }
+}

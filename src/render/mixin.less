@@ -1,0 +1,23 @@
+@body-background: #282c34;
+@sidebar-background:rgb(242,242,242);
+@sidebar-logo-background:rgb(242,242,242);
+
+.drag{
+  -webkit-app-region: drag;
+  user-select: none;
+  visibility: hidden;
+}
+.no-drag{
+  -webkit-app-region: no-drag;
+}
+
+.flex(@direction:row,@justify-content:flex-start,@align-items: stretch){
+  display: flex;
+  flex-direction: @direction;
+  justify-content: @justify-content;
+  align-items: @align-items;
+}
+
+.bounce-transition(@property:all, @duration: 1s){
+  transition: @property @duration cubic-bezier(0.49, -0.3, 0.68, 1.23);
+}

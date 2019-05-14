@@ -1,9 +1,48 @@
-.wrapper{
-  height: 100vh;
-  background: lightblue;
+@import "~@/render/mixin.less";
 
-  .hhh2{
-    font-size: 60px;
+.wrapper{
+  height: 100%;
+  width: 100%;
+  background: @sidebar-background;
+  position: relative;
+  user-select: none;
+
+  .menu{
+    &__wrapper{
+
+    }
+
+    &__item{
+      height: 48px;
+      line-height: 48px;
+      text-align: center;
+      font-size: 24px;
+      background: lighten(@sidebar-background,0%);
+    }
+
+  }
+
+  .collapse-button{
+    @height: 200px;
+    @radius: 8px;
+    height: @height;
+    position: absolute;
+    left: 100%;
+    top: clac(50% - @height/2);
+    //transform: translateY(-50%);
+    background: lighten(@sidebar-background,10%);
+    border-top-right-radius: @radius;
+    border-bottom-right-radius: @radius;
+    font-size: 24px;
+    line-height: @height;
+    cursor: pointer;
+    .icon{
+      display: inline-block;
+      transition: transform 0.6s ease-in-out;
+      &.closed{
+        transform: rotate(180deg);
+      }
+    }
   }
 }
 
