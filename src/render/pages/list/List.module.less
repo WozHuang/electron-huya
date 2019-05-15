@@ -10,7 +10,7 @@
 @sidebar-width: 240px; //侧边栏宽度
 @list-padding: 20px; // 列表预留的空间（应为左右空间之和）
 @item-width: 220px; // 单个项目的宽度
-@item-margin:24px; // 单个项目的margin（left & bottom）
+@item-margin: 24px; // 单个项目的margin（left & bottom）
 
 .live {
   &__listWrapper {
@@ -19,41 +19,51 @@
     .clearFix;
   }
 
-  &__item {
-    width: 14.627%;
+  &__item{
+    padding: @item-margin/2;
     float: left;
-    margin-left: @item-margin;
-    margin-bottom: @item-margin;
+    width: 25%;
   }
 }
 
-.calc_width(@i) when (@i>0) {
-  // 屏幕宽度
-  @screen-width: @sidebar-width + @list-padding + @i*@item-width + (@i+1)*@item-margin;
+@max-list-number: 10;
 
-  // 列表宽度
-  @list-width: @list-padding + @i*@item-width + (@i+1)*@item-margin;
+.c_width(@i) when (@i < @max-list-number) {
+  // 关闭侧边栏时的屏幕宽度
+  @screen-width-without-sidebar: @list-padding + @i*@item-width;
+  // 打开侧边栏时的屏幕宽度
+  @screen-width-with-sidebar: @sidebar-width + @list-padding + @i*@item-width;
 
-  @media screen and (max-width: @screen-width) {
-    // floor( *100000)/100000 是为了以舍去的方式保留小数
-    // 不使用 round 避免四舍五入后超过 100%
+  /* 这一段是侧边栏打开与否列表数都一样 */
+  /* @item-width 是每个项的最小宽度 */
+  @media screen and (min-width: @screen-width-with-sidebar) {
     .live__item {
-      width: round((@item-width/@screen-width)*100000) /100000  * 100%;
+      width: percentage(floor((1/@i) * 10000)/10000);
       z-index: @i;
     }
+  }
 
-    .sidebarOpened {
+  /* 这一段是侧边栏打开时列数会变化 */
+  /* 但是这个代码有问题，@item-width 成了每个项的最大宽度 */
+  /*
+    @media screen and (min-width: @screen-width-without-sidebar) {
       .live__item {
-        width: round((@item-width/@list-width)*100000) /100000  * 100%;
+        width: percentage(floor((1/@i) * 10000)/10000);
         z-index: @i;
       }
     }
-  }
-
-  .calc_width(@i - 1 );
+    @media screen and (min-width: @screen-width-with-sidebar) {
+      .sidebarOpened .live__item {
+        width: percentage(floor((1/@i) * 10000)/10000);
+        z-index: @i;
+      }
+    }
+  */
+  .c_width(@i + 1);
 }
 
-.calc_width(6);
+.c_width(3);
+
 
 .pagination {
   margin: 20px auto;
