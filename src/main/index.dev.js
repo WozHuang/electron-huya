@@ -8,7 +8,7 @@ electron.app.on('ready', () => {
 
   // 安装react-devtools
   // 只需要安装一次，安装完成后注释掉这段代码
-  // BrowserWindow.addDevToolsExtension(path.resolve(__dirname, '../../chromeExtension/react-devtools'));
+  BrowserWindow.addDevToolsExtension(path.resolve(__dirname, '../chromeExtension/react-devtools'));
   // console.log('React-devtools has been installed as browser extension.');
 });
 

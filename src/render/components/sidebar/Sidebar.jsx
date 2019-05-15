@@ -27,8 +27,8 @@ class Sidebar extends React.Component {
         <ul className={style["menu__wrapper"]}>
           {
             this.state.menuList.map(item => (
-              <li className={style["menu__item"]}>
-                <NavLink exact to={item.path} key={item.name} activeClassName={style["current"]}>
+              <li className={style["menu__item"]} key={item.name}>
+                <NavLink exact to={item.path} activeClassName={style["current"]}>
                   <span>{item.name}</span>
                 </NavLink>
               </li>
