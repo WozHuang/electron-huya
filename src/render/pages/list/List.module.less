@@ -1,3 +1,61 @@
-.wrapper{
+@import "~@/render/mixin.less";
+
+.wrapper {
   color: #fff;
+}
+
+/*
+循环计算在不同宽度下单个块的宽度
+*/
+@sidebar-width: 240px; //侧边栏宽度
+@list-padding: 20px; // 列表预留的空间（应为左右空间之和）
+@item-width: 220px; // 单个项目的宽度
+@item-margin:24px; // 单个项目的margin（left & bottom）
+
+.live {
+  &__listWrapper {
+    //.flex(row,space-around);
+    //flex-wrap: wrap;
+    .clearFix;
+  }
+
+  &__item {
+    width: 14.627%;
+    float: left;
+    margin-left: @item-margin;
+    margin-bottom: @item-margin;
+  }
+}
+
+.calc_width(@i) when (@i>0) {
+  // 屏幕宽度
+  @screen-width: @sidebar-width + @list-padding + @i*@item-width + (@i+1)*@item-margin;
+
+  // 列表宽度
+  @list-width: @list-padding + @i*@item-width + (@i+1)*@item-margin;
+
+  @media screen and (max-width: @screen-width) {
+    // floor( *100000)/100000 是为了以舍去的方式保留小数
+    // 不使用 round 避免四舍五入后超过 100%
+    .live__item {
+      width: round((@item-width/@screen-width)*100000) /100000  * 100%;
+      z-index: @i;
+    }
+
+    .sidebarOpened {
+      .live__item {
+        width: round((@item-width/@list-width)*100000) /100000  * 100%;
+        z-index: @i;
+      }
+    }
+  }
+
+  .calc_width(@i - 1 );
+}
+
+.calc_width(6);
+
+.pagination {
+  margin: 20px auto;
+  text-align: center;
 }

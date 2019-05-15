@@ -30,3 +30,5 @@
 直接使用electron-packager能够设置Windows下的图标，但是不能设置linux下的。。。，如果想要设置启动项的图标需要使用制作安装包的工具，这个在electron-packager的readme里面有，另外可以通过BrowserWindow的icon选项手动设置底部任务栏里的图标，但是需要注意路径，为了能够获得正确的路径，在webpack打包主进程的时候设置__dirname和__filename为false，electron在运行时才能获得正确的路径，以便找到打包进去的logo路径,见[issue](https://github.com/electron-userland/electron-packager/issues/935)
 
 使用redux-persist持久化存储，[参考链接](https://www.jianshu.com/p/8a2b9be974a7)
+
+在列表中使用了less循环计算出在不同宽度下的项目宽度（媒体查询，见 List.module.less）

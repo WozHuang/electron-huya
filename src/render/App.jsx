@@ -13,7 +13,7 @@ class App extends React.Component {
         <div className={`${style["sidebar-wrapper"]} ${this.props.sidebarOpened ? "" : style["sidebar-wrapper--collapse"]}`}>
           <Sidebar/>
         </div>
-        <div className={style["content-wrapper"]}>
+        <div id="content-box" className={style["content-wrapper"]}>
           <RootRouter/>
         </div>
       </div>

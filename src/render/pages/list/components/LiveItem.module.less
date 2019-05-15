@@ -1,0 +1,37 @@
+@import "~@/render/mixin.less";
+
+//.wrapper {
+  //width: 100%;
+//}
+
+// 保证图片块比例为 338 / 190，避免布局错乱
+.poster__wrapper {
+  width: 100%;
+  height: 0;
+  padding-bottom: percentage(190/338);
+  position: relative;
+
+  background: lighten(@body-background,10%);
+}
+
+.poster {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  filter: opacity(0);
+}
+
+.bottom {
+  width: 100%;
+  font-size: 14px;
+  line-height: 20px;
+  height: 40px;
+  word-break: break-all;
+
+  .ellipsis(2);
+
+  //white-space: nowrap;
+  //overflow: hidden;
+}

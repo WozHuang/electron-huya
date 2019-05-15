@@ -19,6 +19,7 @@
   &--collapse {
     //width: 0;
     position: absolute;
+    z-index: 2;
     transform: translateX(calc(-100% + 50px));
   }
 }
@@ -26,4 +27,8 @@
 .content-wrapper {
   width: 0;
   flex: 1;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding-left: 20px;
 }

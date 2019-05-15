@@ -38,12 +38,14 @@
     height: @height;
     position: absolute;
     left: 100%;
-    top: clac(50% - @height/2);
+    top: calc(50% - @height/2);
     //transform: translateY(-50%);
     background: lighten(@sidebar-background,10%);
     border-top-right-radius: @radius;
     border-bottom-right-radius: @radius;
-    font-size: 24px;
+    border: 1px solid #788592;
+    border-left: none;
+    font-size: 16px;
     line-height: @height;
     cursor: pointer;
     .icon{

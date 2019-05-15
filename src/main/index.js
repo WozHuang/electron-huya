@@ -21,8 +21,8 @@ function createWindow() {
       // 启用node集成
       nodeIntegration: true,
       //  只在开发环境下启动开发者工具
-      devTools: isDevelopment
-      // webSecurity: false,
+      devTools: isDevelopment,
+      webSecurity: false,
     },
     // 无边框+透明
     // frame: false,
