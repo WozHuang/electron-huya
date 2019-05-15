@@ -9,7 +9,7 @@ export default class LiveItem extends React.Component {
 
   playLive = () => {
     // 远程内容禁用 node集成
-    // window.open(`http://liveshare.huya.com/iframe/${this.props.roomData.profileRoom}`, '_blank', 'nodeIntegration=no');
+    window.open(`http://liveshare.huya.com/iframe/${this.props.roomData.profileRoom}`, '_blank', 'nodeIntegration=no');
   };
 
   render() {
@@ -22,7 +22,15 @@ export default class LiveItem extends React.Component {
           <img className={style['poster']} alt={roomData.introduction}
                src={roomData.screenshot + screenShotSuffix}/>
         </div>
-        <div className={style['bottom']}>{roomData.introduction}</div>
+        <div className={style['bottom']}>
+          <div className={style['introduction']}>
+            {roomData.introduction}
+          </div>
+          <div className={style['bottom__info']}>
+            <span className={style['bottom__nick']}>{roomData.nick}</span><span
+            className={style['bottom__fans']}>{roomData.totalCount}</span>
+          </div>
+        </div>
       </div>
     );
   }

@@ -1,8 +1,8 @@
 @import "~@/render/mixin.less";
 
-//.wrapper {
-  //width: 100%;
-//}
+.wrapper {
+  background: lighten(@body-background, 15%);
+}
 
 // 保证图片块比例为 338 / 190，避免布局错乱
 .poster__wrapper {
@@ -10,8 +10,7 @@
   height: 0;
   padding-bottom: percentage(190/338);
   position: relative;
-
-  background: lighten(@body-background,10%);
+  background: lighten(@body-background, 10%);
 }
 
 .poster {
@@ -20,18 +19,47 @@
   position: absolute;
   left: 0;
   top: 0;
-  filter: opacity(0);
+  //filter: opacity(0);
 }
 
 .bottom {
-  width: 100%;
-  font-size: 14px;
-  line-height: 20px;
-  height: 40px;
-  word-break: break-all;
+  padding: 8px;
 
-  .ellipsis(2);
+  .introduction {
+    width: 100%;
+    font-size: 14px;
+    line-height: 20px;
+    height: 40px;
+    word-break: break-all;
+    .ellipsis(2);
+  }
 
-  //white-space: nowrap;
-  //overflow: hidden;
+  &__info {
+    .flex(row, space-between);
+    font-size: 12px;
+    color: @icon-color;
+  }
+
+  &__nick {
+
+  }
+
+  &__fans {
+    vertical-align: center;
+
+    &:before {
+      display: inline-block;
+      content: '';
+      width: 12px;
+      height: 12px;
+      margin: 0 2px;
+      background: url("./fans.png");
+      background-size: 100% 100%;
+      position: relative;
+      top: 2px;
+    }
+  }
 }
+
+//white-space: nowrap;
+//overflow: hidden;

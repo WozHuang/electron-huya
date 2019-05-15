@@ -1,6 +1,8 @@
 @body-background: #282c34;
 @sidebar-background: rgb(242, 242, 242);
 @sidebar-logo-background: rgb(242, 242, 242);
+@font-color: #fff;
+@icon-color: darken(@font-color,25%);// #bfbfbf
 
 .drag() {
   -webkit-app-region: drag;
@@ -19,6 +21,7 @@
   align-items: @align-items;
 }
 
+// 带回弹的过渡
 .bounce-transition(@property:all, @duration: 1s) {
   transition: @property @duration cubic-bezier(0.49, -0.3, 0.68, 1.23);
 }

@@ -1,16 +1,16 @@
 @import "~@/render/mixin.less";
 
 .wrapper {
-  color: #fff;
+  color: @font-color;
 }
 
 /*
 循环计算在不同宽度下单个块的宽度
 */
 @sidebar-width: 240px; //侧边栏宽度
-@list-padding: 20px; // 列表预留的空间（应为左右空间之和）
+@list-padding-left: 20px; // 列表左侧预留的空间（留给侧边栏的小箭头的）
 @item-width: 220px; // 单个项目的宽度
-@item-margin: 24px; // 单个项目的margin（left & bottom）
+@item-padding: 8px; // 单个项目的左右padding
 
 .live {
   &__listWrapper {
@@ -20,7 +20,7 @@
   }
 
   &__item{
-    padding: @item-margin/2;
+    padding: @item-padding*2 @item-padding 0;
     float: left;
     width: 25%;
   }
@@ -28,11 +28,12 @@
 
 @max-list-number: 10;
 
+/* 不知道什么地方的盒模型有问题，结果总是不对 */
 .c_width(@i) when (@i < @max-list-number) {
   // 关闭侧边栏时的屏幕宽度
-  @screen-width-without-sidebar: @list-padding + @i*@item-width;
+  @screen-width-without-sidebar: @list-padding-left + @i*@item-width;
   // 打开侧边栏时的屏幕宽度
-  @screen-width-with-sidebar: @sidebar-width + @list-padding + @i*@item-width;
+  @screen-width-with-sidebar: @sidebar-width + @list-padding-left + @i*@item-width;
 
   /* 这一段是侧边栏打开与否列表数都一样 */
   /* @item-width 是每个项的最小宽度 */
