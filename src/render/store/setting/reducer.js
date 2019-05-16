@@ -7,7 +7,10 @@ const defaultState = {
 export default function setting(state = defaultState, action = {}) {
   switch (action.type) {
     case type.TOGGLE_SIDEBAR:
-      return { ...state, sidebarOpened: !state.sidebarOpened };
+      return {
+        ...state,
+        sidebarOpened: action.status !== undefined ? action.status : !state.sidebarOpened
+      };
     default:
       return state;
   }

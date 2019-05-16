@@ -5,6 +5,7 @@ import {Pagination} from "antd";
 import LiveItem from "@/render/pages/list/components/LiveItem";
 import {connect} from "react-redux";
 import {scrollToTop} from "@/render/util/util";
+import {toggleSidebar} from "@/render/store/setting/action";
 
 class List extends React.Component {
   state = {
@@ -18,6 +19,7 @@ class List extends React.Component {
 
   componentDidMount() {
     this.getList();
+    this.props.toggleSidebar({ status: true });
   }
 
   getList() {
@@ -64,4 +66,6 @@ class List extends React.Component {
 
 export default connect(state => ({
   sidebarOpened: state.setting.sidebarOpened
-}))(List);
+}), {
+  toggleSidebar
+})(List);

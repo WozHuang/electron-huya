@@ -1,6 +1,6 @@
 import React from 'react';
 import style from './Sidebar.module.less';
-import Logo from "@/render/components/logo/Logo";
+import Logo from "@/render/components/logo/Logo.jsx";
 import {Icon} from "antd";
 import {connect} from "react-redux";
 import {toggleSidebar} from "@/render/store/setting/action";

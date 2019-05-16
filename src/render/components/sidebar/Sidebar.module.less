@@ -6,6 +6,10 @@
   background: @sidebar-background;
   position: relative;
   user-select: none;
+  color: @sidebar-font-color;
+  a{
+    color: @sidebar-font-color;
+  }
 
   .menu{
     &__wrapper{
@@ -51,6 +55,7 @@
     .icon{
       display: inline-block;
       transition: transform 0.3s ease-in-out;
+      color: @sidebar-font-color;
       &.closed{
         transform: rotate(180deg);
       }

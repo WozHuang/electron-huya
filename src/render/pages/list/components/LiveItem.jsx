@@ -27,7 +27,7 @@ export default class LiveItem extends React.Component {
           </div>
           <div className={style['bottom__info']}>
             <span className={style['bottom__nick']}>{roomData.nick}</span>
-            <span className={style['bottom__fans']}><MyIcon class={style['bottom__fans-icon']} type="icon-fans"/> {roomData.totalCount}</span>
+            <span className={style['bottom__fans']}><MyIcon className={style['bottom__fans-icon']} type="icon-fans"/> {roomData.totalCount}</span>
           </div>
         </div>
       </div>
