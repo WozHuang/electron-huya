@@ -27,7 +27,8 @@
       // 全局赋值electron，因为在webpack打包后渲染线程内的require都被替换了
       window.electron = require('electron')
     </script>
-    <div id="root"></div>
+    <!--动态改变 #root 的class来修改css变量以便切换主题-->
+    <div class="theme-dark" id="root"></div>
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.

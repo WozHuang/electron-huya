@@ -1,7 +1,7 @@
 @import "~@/render/mixin.less";
 
 .wrapper {
-  background: lighten(@body-background, 15%);
+  background: @live-item-background;
 }
 
 // 保证图片块比例为 338 / 190，避免布局错乱
@@ -10,7 +10,6 @@
   height: 0;
   padding-bottom: percentage(190/338);
   position: relative;
-  background: lighten(@body-background, 10%);
 }
 
 .poster {
@@ -44,22 +43,8 @@
 
   }
 
-  &__fans {
-    vertical-align: center;
-
-    &:before {
-      display: inline-block;
-      content: '';
-      width: 12px;
-      height: 12px;
-      margin: 0 2px;
-      background: url("./fans.png");
-      background-size: 100% 100%;
-      position: relative;
-      top: 2px;
-    }
+  &__fans-icon {
+    position: relative;
+    top: -2px;
   }
 }
-
-//white-space: nowrap;
-//overflow: hidden;

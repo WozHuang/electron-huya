@@ -1,0 +1,25 @@
+// @name : --name;
+// 所有文件中直接引用的都是 @name 这个变量
+// 这么做是为了IDE能够提示
+// 使用css变量的目的是实现换肤功能
+// 通过修改 #root 的class 即可更换主题
+
+#root {
+  /* 默认配色 */
+  --body-background: #fff;
+  --sidebar-background: #282c34;
+  --sidebar-logo-background: #282c34;
+  --font-color: #333;
+  --icon-color: lighten(#333, 25%);
+  --live-item-background: lighten(#ccc, 15%);
+
+  /* 暗色 */
+  &.theme-dark {
+    --body-background: #282c34;
+    --sidebar-background: rgb(242, 242, 242);
+    --sidebar-logo-background: rgb(242, 242, 242);
+    --font-color: #fff;
+    --icon-color: darken(#fff, 25%); // #bfbfbf
+    --live-item-background: lighten(#282c34, 15%);
+  }
+}

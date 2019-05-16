@@ -32,3 +32,31 @@
 使用redux-persist持久化存储，[参考链接](https://www.jianshu.com/p/8a2b9be974a7)
 
 在列表中使用了less循环计算出在不同宽度下的项目宽度（媒体查询，见 List.module.less）
+
+关于less的作用域的小陷阱：声明函数时就已经确定了作用域范围，与JS中闭包取值相同，
+
+```less
+@i: 1px;
+.func(){
+  width: @i;
+}
+.a{
+  @i :2px;
+  .func();
+}
+```
+
+最终得到的结果是
+```css
+.a {
+  width: 1px;
+}
+```
+
+**使用 `less + css var()变量` 做换肤功能：**
+
+见 style/theme.less 文件，其实直接使用var() 也可以，但是这样IDE就没有了代码提示，如果不需要考虑兼容性的话直接上CSS var就可以了，反正现在EDGE也已经支持了，[关于兼容性](https://developer.mozilla.org/zh-CN/docs/Web/CSS/var)，如果考虑兼容性做个🔨换肤，这种功能也是锦上添花罢了。
+
+**使用iconfont上的图标**
+
+见[antd上的说明](https://ant.design/components/icon-cn/#components-icon-demo-iconfont)，在这里对里面的 `Icon.createFromIconfontCN` 生成的组件进行一个包装，以便IDE有代码提示，PS：在开发完成后应当把文件下载下来并手动引入,相关代码在 `components/myIcon/MyIcon`

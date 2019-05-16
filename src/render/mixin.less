@@ -1,8 +1,11 @@
-@body-background: #282c34;
-@sidebar-background: rgb(242, 242, 242);
-@sidebar-logo-background: rgb(242, 242, 242);
-@font-color: #fff;
-@icon-color: darken(@font-color,25%);// #bfbfbf
+// 这里暴露出去的是CSS变量,缺点是不能直接用less中的 darken 和 lighten 了
+@body-background: var(--body-background);
+@sidebar-background: var(--sidebar-background);
+@sidebar-logo-background: var(--sidebar-logo-background);
+@font-color: var(--font-color);
+@icon-color: var(--icon-color);
+@live-item-background: var(--live-item-background);
+
 
 .drag() {
   -webkit-app-region: drag;
