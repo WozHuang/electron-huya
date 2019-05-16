@@ -1,5 +1,5 @@
 // 用于修改create-react-app的默认配置
-const { override, fixBabelImports, addLessLoader } = require('customize-cra');
+const { override, fixBabelImports, addLessLoader, addDecoratorsLegacy } = require('customize-cra');
 const path = require('path');
 
 const f = override(
@@ -8,10 +8,13 @@ const f = override(
     libraryDirectory: 'es',
     style: 'css',
   }),
+  // less语法
   addLessLoader({
     javascriptEnabled: true,
     modifyVars: { '@primary-color': '#1DA57A' },
   }),
+  // 装饰器语法
+  addDecoratorsLegacy()
 );
 
 module.exports = function (config,) {

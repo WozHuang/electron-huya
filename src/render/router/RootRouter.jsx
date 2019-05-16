@@ -2,6 +2,7 @@ import React from 'react';
 import {Switch, Route, Redirect} from "react-router-dom";
 import Hello from "@/render/pages/hello/Hello";
 import List from "@/render/pages/list/List";
+import RedirectPage from "@/render/pages/redirect/RedirectPage";
 
 export default class RootRouter extends React.Component {
   render() {
@@ -9,6 +10,7 @@ export default class RootRouter extends React.Component {
       <Switch>
         <Route path="/" exact component={Hello}/>
         <Route path="/list" component={List}/>
+        <Route path="/redirectTo" component={RedirectPage}/>
         <Redirect to="/"/>
       </Switch>
     );

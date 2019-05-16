@@ -3,6 +3,7 @@ import style from './App.module.less';
 import Sidebar from "@/render/components/sidebar/Sidebar";
 import {connect} from "react-redux";
 import RootRouter from "@/render/router/RootRouter";
+import Header from "@/render/components/header/Header";
 
 class App extends React.Component {
 
@@ -10,11 +11,17 @@ class App extends React.Component {
     // const logo = 1 ? logo : process.env.PUBLIC_URL + '/favicon.png';
     return (
       <div className={style["body-wrapper"]}>
-        <div className={`${style["sidebar-wrapper"]} ${this.props.sidebarOpened ? "" : style["sidebar-wrapper--collapse"]}`}>
+        <div
+          className={`${style["sidebar-wrapper"]} ${this.props.sidebarOpened ? "" : style["sidebar-wrapper--collapse"]}`}>
           <Sidebar/>
         </div>
-        <div id="content-box" className={style["content-wrapper"]}>
-          <RootRouter/>
+        <div className={style['right-side']}>
+          <header className={style['header-wrapper']}>
+            <Header/>
+          </header>
+          <div id="content-box" className={style["content-wrapper"]}>
+            <RootRouter/>
+          </div>
         </div>
       </div>
     );

@@ -60,3 +60,7 @@
 **使用iconfont上的图标**
 
 见[antd上的说明](https://ant.design/components/icon-cn/#components-icon-demo-iconfont)，在这里对里面的 `Icon.createFromIconfontCN` 生成的组件进行一个包装，以便IDE有代码提示，PS：在开发完成后应当把文件下载下来并手动引入,相关代码在 `components/myIcon/MyIcon`
+
+**实现刷新**
+
+加了一个专用于刷新的页面，不渲染东西，在加载时就刷新到
