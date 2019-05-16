@@ -1,16 +1,16 @@
 // 这里暴露出去的是CSS变量,缺点是不能直接用less中的 darken 和 lighten 了
-@body-background: var(--body-background);
+@body-background-color: var(--body-background);
 @sidebar-background: var(--sidebar-background);
 @sidebar-logo-background: var(--sidebar-logo-background);
 @font-color: var(--font-color);
 @icon-color: var(--icon-color);
 @live-item-background: var(--live-item-background);
-
+@sidebar-font-color: @body-background-color;
 
 .drag() {
   -webkit-app-region: drag;
   user-select: none;
-  visibility: hidden;
+  //visibility: hidden;
 }
 
 .no-drag() {
