@@ -1,6 +1,31 @@
-.wrapper{
-  font-size: 20px;
-}
-.return-btn{
+@import "~@/render/mixin.less";
 
+.wrapper {
+  height: 60px;
+  padding: (10px-2px) (10px-2px) 10px 10px;  // 减掉外面包着的那层，见App.module.less 中的header-wrapper
+  font-size: 20px;
+  line-height: 40px;
+  .drag();
+
+  span {
+    display: inline-block;
+  }
+}
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+.separator {
+  height: 100%;
+  width: 2px;
+  color: @icon-color;
+}
+
+.btn {
+  .no-drag();
 }

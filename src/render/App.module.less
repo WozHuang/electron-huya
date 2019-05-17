@@ -14,7 +14,7 @@
   width: 240px;
   height: 100%;
   //.bounce-transition(transform);
-  transition: transform 0.3s ease-in-out;
+  transition: transform 0.2s ease-in-out;
 
   &--collapse {
     //width: 0;
@@ -41,8 +41,9 @@
 }
 
 .header-wrapper{
-  //.drag();
-  //height: 50px;
+  // 这两个1px是为了让标题栏的边缘和左侧可以拖动大小
+  padding-top: 2px;
+  padding-right: 2px;
   background: @header-background-color;
   color: @header-font-color;
 }

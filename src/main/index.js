@@ -25,8 +25,12 @@ function createWindow() {
       webSecurity: false,
     },
     // 无边框+透明
-    // frame: false,
-    // transparent: false,
+    frame: false,
+
+    // 慎用，有bug，最大化时底部会有1px的空白，估计是修不好了
+    // 见 https://github.com/electron/electron/issues/8728
+    // transparent: true,
+
     // resizable: true,
 
     // 设置图标，这里需要webpack 不 mock掉 __dirname 这个属性才行
@@ -43,8 +47,9 @@ function createWindow() {
     mainWindow.loadFile('index.html');
   }
 
-  // 打开时直接最大化
+  // 窗口默认不是最大化的，如果默认最大化的话要改下 Header.jsx 中的判断
   // mainWindow.maximize();
+  // mainWindow.setFullScreen(true);
 
   // ipc(mainWindow);
 
@@ -56,7 +61,7 @@ function createWindow() {
 app.on('ready', () => {
 
   // 去除electron默认的菜单栏
-  // 去除了以后需要使用electron-debug这个库帮开发环境绑定f12打开开发者工具的快捷键
+  // 去除了以后需要使用electron-debug这个库帮开发环境绑定F12打开开发者工具的快捷键
   Menu.setApplicationMenu(null);
 
   // 如果是linux系统的话要延迟启动，因为透明窗口在linux下有bug

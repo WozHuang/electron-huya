@@ -1,7 +1,9 @@
 import * as type from './action-type';
+import {setMaximize} from "@/render/util/util";
 
 const defaultState = {
-  sidebarOpened: true
+  sidebarOpened: true, // 侧边栏是否打开
+  isMaximized: false, // 主窗口是否最大化
 };
 
 export default function setting(state = defaultState, action = {}) {
@@ -11,6 +13,16 @@ export default function setting(state = defaultState, action = {}) {
         ...state,
         sidebarOpened: action.status !== undefined ? action.status : !state.sidebarOpened
       };
+
+    case type.TOGGLE_MAXIMIZED: {
+      const isMaximized = action.status !== undefined ? action.status : !state.isMaximized;
+      setMaximize(isMaximized);
+      return {
+        ...state,
+        isMaximized
+      };
+    }
+
     default:
       return state;
   }

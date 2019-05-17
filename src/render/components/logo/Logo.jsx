@@ -1,14 +1,16 @@
 import React from "react";
 import style from './Logo.module.less';
+import {withRouter} from 'react-router-dom';
 
-
-export default class Logo extends React.Component {
+@withRouter
+class Logo extends React.Component {
 
   clickHandler = () => {
     // const url = 'http://liveshare.huya.com/iframe/11342412';
-    const url = 'http://baidu.com';
+    // const url = 'http://baidu.com';
     // window.electron.shell.openExternal(url);
-    window.open(url,"","frame=false");
+    // window.open(url, "", "frame=false");
+    this.props.history.push('/');
   };
 
   render() {
@@ -26,3 +28,5 @@ export default class Logo extends React.Component {
     );
   }
 }
+
+export default Logo;

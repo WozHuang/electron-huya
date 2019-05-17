@@ -12,11 +12,17 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  //background-color: transparent!important; // 覆盖掉antd里面的body:background-color，因为是无边框窗口body不需要背景色
 }
 
 #root {
   height: 100vh;
   font-family: PuHuiTi, serif;
+  //padding: 1px;// 添加1px的空间保证四条边都能够拖动
+}
+
+#App{
+  overflow: hidden;
 }
 
 code {

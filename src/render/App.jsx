@@ -8,9 +8,8 @@ import Header from "@/render/components/header/Header";
 class App extends React.Component {
 
   render() {
-    // const logo = 1 ? logo : process.env.PUBLIC_URL + '/favicon.png';
     return (
-      <div className={style["body-wrapper"]}>
+      <div id="App" className={style["body-wrapper"]}>
         <div
           className={`${style["sidebar-wrapper"]} ${this.props.sidebarOpened ? "" : style["sidebar-wrapper--collapse"]}`}>
           <Sidebar/>
