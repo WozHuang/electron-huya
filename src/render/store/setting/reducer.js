@@ -1,5 +1,5 @@
 import * as type from './action-type';
-import {setMaximize} from "@/render/util/util";
+import {setWindowMaximize} from "@/render/util/util";
 
 const defaultState = {
   sidebarOpened: true, // 侧边栏是否打开
@@ -16,7 +16,7 @@ export default function setting(state = defaultState, action = {}) {
 
     case type.TOGGLE_MAXIMIZED: {
       const isMaximized = action.status !== undefined ? action.status : !state.isMaximized;
-      setMaximize(isMaximized);
+      setWindowMaximize(isMaximized);
       return {
         ...state,
         isMaximized

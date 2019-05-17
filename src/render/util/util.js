@@ -12,11 +12,27 @@ export function scrollToTop(scrollTop = 0) {
  * 切换最大化最小化窗口状态
  * @param status
  */
-export function setMaximize(status = true) {
+export function setWindowMaximize(status = true) {
   const currentWindow = electron.remote.getCurrentWindow();
   if (status) {
     currentWindow.maximize();
   } else {
     currentWindow.unmaximize();
   }
+}
+
+/**
+ * 最小化窗口
+ */
+export function minimizeWindow() {
+  const currentWindow = electron.remote.getCurrentWindow();
+  currentWindow.minimize();
+}
+
+/**
+ * 关闭当前窗口
+ */
+export function closeWindow() {
+  const currentWindow = electron.remote.getCurrentWindow();
+  currentWindow.close();
 }

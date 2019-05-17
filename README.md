@@ -76,7 +76,11 @@ antd中有一条,全局设置盒模型的，这个需要注意一下，以免在
 
 **react-router刷新页面**
 
-加了一个专用于刷新的路由，不渲染东西，在加载时就刷新到置顶页面去,具体实现是一个混入的方法，以便调用，见 `src/render/util/mixin.js` 和 `src/render/pages/redirect/RedirectPage.jsx`，(其实这方法我是从vue-element-admin中抄来的😳，因为找了好久都没找到办法，如果知道的能告诉我不胜感激)
+加了一个专用于刷新的路由，不渲染东西，在加载时就刷新到置顶页面去,具体实现是一个混入的方法，以便调用，见 `src/render/util/mixin.js` 和 `src/render/pages/redirect/RedirectPage.jsx`，这样就能在刷新的时候保证 componentDidMount 被调用
+
+或者是直接使用 componentWillReceiveProps
+
+(其实这方法我是从vue-element-admin中抄来的😳，因为找了好久都没找到办法，如果知道的能告诉我不胜感激)
 
 **关于切换时保存路由状态**
 这个项目中没有考虑这个，参考[这篇](https://blog.csdn.net/yuzhongzi81/article/details/79089122)，或者考虑使用[react-keeper](https://github.com/vifird/react-keeper)，能够实现类似vue中`<keep-alive>` 的功能
@@ -88,7 +92,7 @@ antd中有一条,全局设置盒模型的，这个需要注意一下，以免在
 主要是出现在可拖动区域内（比如标题栏），因为设置了拖拽的区域无法接收到鼠标事件自然也就不会有拖拽边缘的事件了
 
 解决方案：
-- 在最外层上加一个 `padding:1px` 即可，并使用 `transparent: true` 把背景色设置为透明,下面这个图的红色边框就是本应该是透明的位置,但是会导致最大化时在底部会留有1px可拖动的间距（鬼知道是electron还是Chromium的bug），因此对于需要最大化功能的应用得慎用
+- 在最外层上加一个 `padding:1px` 即可，并使用 `transparent: true` 把背景色设置为透明,下面这个图的红色边框就是本应该是透明的位置,但是会导致最大化时在底部会留有1px可拖动的间距（鬼知道是electron还是Chromium的bug），因此对于需要最大化功能的应用得慎用，见[issue1](https://github.com/electron/electron/issues/8728),[issue2](https://github.com/electron/electron/issues/8350)
 
 ![padding](./assets/padding.png)
 

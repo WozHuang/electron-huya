@@ -38,7 +38,7 @@ class List extends React.Component {
         this.setState({
           loading: false,
           fail: true
-        })
+        });
       });
 
   }
@@ -58,22 +58,22 @@ class List extends React.Component {
           fail={this.state.fail}
         >
 
-        <ul className={`${style['live__listWrapper']} ${this.props.sidebarOpened ? style['sidebarOpened'] : ''}`}>
-          {
-            liveList.map(item => (
-              <li className={style['live__item']} key={item.profileRoom}>
-                <LiveItem roomData={item}/>
-              </li>
-            ))
-          }
-        </ul>
-        <Pagination
-          className={style['pagination']}
-          onChange={this.onPageChange}
-          current={page.pageNo}
-          pageSize={page.pageSize}
-          total={page.totalCount}
-        />
+          <ul className={`${style['live__listWrapper']} ${this.props.sidebarOpened ? style['sidebarOpened'] : ''}`}>
+            {
+              liveList.map(item => (
+                <li className={style['live__item']} key={item.profileRoom}>
+                  <LiveItem roomData={item}/>
+                </li>
+              ))
+            }
+          </ul>
+          <Pagination
+            className={style['pagination']}
+            onChange={this.onPageChange}
+            current={page.pageNo}
+            pageSize={page.pageSize}
+            total={page.totalCount}
+          />
         </Loading>
       </div>
     );
