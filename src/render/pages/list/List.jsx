@@ -6,6 +6,7 @@ import LiveItem from "@/render/pages/list/components/LiveItem";
 import {connect} from "react-redux";
 import {scrollToTop} from "@/render/util/util";
 import {toggleSidebar} from "@/render/store/setting/action";
+import Loading from "@/render/components/loading/Loading";
 
 class List extends React.Component {
   state = {
@@ -14,7 +15,9 @@ class List extends React.Component {
       pageNo: 1,
       pageSize: 120,
       totalCount: 0,
-    }
+    },
+    loading: true,
+    fail: false
   };
 
   componentDidMount() {
@@ -27,8 +30,15 @@ class List extends React.Component {
       .then(data => {
         this.setState({
           liveList: data.list,
-          page: data.page
+          page: data.page,
+          loading: false
         }, scrollToTop);
+      })
+      .catch(() => {
+        this.setState({
+          loading: false,
+          fail: true
+        })
       });
 
   }
@@ -43,6 +53,11 @@ class List extends React.Component {
     const { liveList, page } = this.state;
     return (
       <div className={style.wrapper}>
+        <Loading
+          loading={this.state.loading}
+          fail={this.state.fail}
+        >
+
         <ul className={`${style['live__listWrapper']} ${this.props.sidebarOpened ? style['sidebarOpened'] : ''}`}>
           {
             liveList.map(item => (
@@ -59,6 +74,7 @@ class List extends React.Component {
           pageSize={page.pageSize}
           total={page.totalCount}
         />
+        </Loading>
       </div>
     );
   }

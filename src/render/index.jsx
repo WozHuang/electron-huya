@@ -8,17 +8,10 @@ import {PersistGate} from 'redux-persist/integration/react';
 import {store, persistor} from './store/store';
 import {HashRouter} from "react-router-dom";
 
-// 一个用于强制刷新的方法
-React.Component.prototype.refreshPage = function () {
-  if (!this.props.history) {
-    throw new Error('need this.props.history');
-  }
-  this.props.history.push('/redirectTo?t=' + this.props.history.location.pathname);
-};
-
 // 注入store
 // 持久化数据
 // hash路由
+// 关于视图的都不放在这里
 ReactDOM.render(
   <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>

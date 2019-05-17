@@ -19,7 +19,7 @@ request.interceptors.response.use(response => {
   }
   return res.data;
 }, error => {
-  message.error(error);
+  message.error(error.toString());
   return Promise.reject(error);
 });
 

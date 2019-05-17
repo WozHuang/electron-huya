@@ -2,8 +2,10 @@ import React from 'react';
 import {Icon} from "antd";
 import style from './Header.module.less';
 import {withRouter} from 'react-router-dom';
+import {withRefresh} from "@/render/util/mixin";
 
 @withRouter
+@withRefresh
 class Header extends React.Component {
 
   toList = () => {
@@ -17,7 +19,7 @@ class Header extends React.Component {
   };
 
   render() {
-    const canGoBack = true||this.props.history.location.pathname !== '/';
+    const canGoBack = this.props.history.location.pathname !== '/';
     return (
       <div className={style['wrapper']}>
         {
