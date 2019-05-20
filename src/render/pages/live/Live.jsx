@@ -4,12 +4,15 @@ import style from "./Live.module.less";
 import Loading from "@/render/components/loading/Loading";
 import {connect} from "react-redux";
 import {toggleSidebar} from "@/render/store/setting/action";
+import LiveHeader from "@/render/pages/live/components/LiveHeader";
+import LiveBody from "@/render/pages/live/components/LiveBody";
+import BarrageList from "@/render/pages/live/components/BarrageList";
 
 class Live extends React.Component {
   state = {
     loading: true,
     fail: false,
-    roomData: null
+    liveData: null
   };
 
   componentDidMount() {
@@ -22,7 +25,7 @@ class Live extends React.Component {
     getLiveData({ profileRoom: this.profileRoom })
       .then(data => {
         this.setState({
-          roomData: data,
+          liveData: data,
           loading: false
         });
       })
@@ -35,15 +38,28 @@ class Live extends React.Component {
   }
 
   render() {
+    const liveData = this.state.liveData;
     return (
-      <div className={style['wrapper']}>
-        <Loading
-          loading={this.state.loading}
-          fail={this.state.fail}
-        >
-          {this.profileRoom}
-        </Loading>
-      </div>
+      <Loading
+        loading={this.state.loading}
+        fail={this.state.fail}
+      >
+        {liveData &&
+        <div className={style['wrapper']}>
+          <div className={style['left']}>
+            <div className={style['live-header']}>
+              <LiveHeader liveData={liveData}/>
+            </div>
+            <div className={style['live-body']}>
+              <LiveBody liveData={liveData}/>
+            </div>
+          </div>
+          <div className={style['right']}>
+            <BarrageList liveData={liveData}/>
+          </div>
+        </div>
+        }
+      </Loading>
     );
   }
 }

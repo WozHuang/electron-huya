@@ -68,7 +68,7 @@ class List extends React.Component {
             {
               liveList.map(item => (
                 <li className={style['live__item']} key={item.profileRoom}>
-                  <LiveItem roomData={item}/>
+                  <LiveItem liveData={item}/>
                 </li>
               ))
             }

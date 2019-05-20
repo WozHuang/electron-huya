@@ -7,34 +7,28 @@ import {withRouter} from 'react-router-dom';
 @withRouter
 class LiveItem extends React.Component {
   static propTypes = {
-    roomData: PropTypes.object.isRequired
+    liveData: PropTypes.object.isRequired
   };
 
   playLive = () => {
-    // 打开远程内容时应当禁用 node集成，保证安全并避免require导致jq等一些库出问题
-    // window.open(`http://liveshare.huya.com/iframe/${this.props.roomData.profileRoom}`, '_blank', 'nodeIntegration=no');
-    // window.electron.remote.dialog.showMessageBox({
-    //   message: this.props.roomData.nick,
-    //   title: '提示'
-    // })
-    this.props.history.push(`/live/${this.props.roomData.profileRoom}`);
+    this.props.history.push(`/live/${this.props.liveData.profileRoom}`);
   };
 
   render() {
-    const { roomData } = this.props;
+    const { liveData } = this.props;
     const screenShotSuffix = '?x-oss-process=image/resize,limit_0,m_fill,w_338,h_190/sharpen,80/format,webp/quality,q_90';
     return (
       <div onClick={this.playLive} className={style['wrapper']}>
         <div className={style['poster__wrapper']}>
-          <img className={style['poster__content']} alt={roomData.introduction} src={roomData.screenshot + screenShotSuffix}/>
+          <img className={style['poster__content']} alt={liveData.introduction} src={liveData.screenshot + screenShotSuffix}/>
         </div>
         <div className={style['bottom']}>
           <div className={style['introduction']}>
-            {roomData.introduction}
+            {liveData.introduction}
           </div>
           <div className={style['bottom__info']}>
-            <span className={style['bottom__nick']}>{roomData.nick}</span>
-            <span className={style['bottom__fans']}><MyIcon className={style['bottom__fans-icon']} type="icon-fans"/> {roomData.totalCount}</span>
+            <span className={style['bottom__nick']}>{liveData.nick}</span>
+            <span className={style['bottom__fans']}><MyIcon className={style['bottom__fans-icon']} type="icon-fans"/> {liveData.totalCount}</span>
           </div>
         </div>
       </div>

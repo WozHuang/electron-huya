@@ -1,3 +1,29 @@
-.wrapper{
+@import "~@/render/mixin.less";
 
+.wrapper {
+  .flex(row);
+}
+
+.left {
+  width: 0;
+  height: calc(100vh - @title-bar-height);
+  flex: 1;
+  margin-right: 8px;
+  background: lighten(lightblue,15%);
+
+  .flex(column);
+  .live-header{
+    //height: 60px;
+    background: lighten(mediumpurple,25%);
+  }
+  .live-body{
+    height: 0;
+    flex: 1;
+  }
+}
+
+.right {
+  width: 300px;
+  height: calc(100vh - @title-bar-height);
+  background: lighten(lightpink,10%);
 }
