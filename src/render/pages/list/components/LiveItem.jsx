@@ -2,15 +2,22 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import style from './LiveItem.module.less';
 import MyIcon from "@/render/components/myIcon/MyIcon";
+import {withRouter} from 'react-router-dom';
 
-export default class LiveItem extends React.Component {
+@withRouter
+class LiveItem extends React.Component {
   static propTypes = {
     roomData: PropTypes.object.isRequired
   };
 
   playLive = () => {
-    // 远程内容禁用 node集成
-    window.open(`http://liveshare.huya.com/iframe/${this.props.roomData.profileRoom}`, '_blank', 'nodeIntegration=no');
+    // 打开远程内容时应当禁用 node集成，保证安全并避免require导致jq等一些库出问题
+    // window.open(`http://liveshare.huya.com/iframe/${this.props.roomData.profileRoom}`, '_blank', 'nodeIntegration=no');
+    // window.electron.remote.dialog.showMessageBox({
+    //   message: this.props.roomData.nick,
+    //   title: '提示'
+    // })
+    this.props.history.push(`/live/${this.props.roomData.profileRoom}`);
   };
 
   render() {
@@ -34,3 +41,5 @@ export default class LiveItem extends React.Component {
     );
   }
 }
+
+export default LiveItem;
