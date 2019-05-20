@@ -4,22 +4,33 @@
 // 使用css变量的目的是实现换肤功能
 // 通过修改 #root 的class 即可更换主题
 
-#root {
+#App {
+
   /* 默认配色 */
-  --body-background: #fff;
-  --sidebar-background: #282c34;
-  --sidebar-logo-background: #282c34;
-  --font-color: #333;
-  --icon-color: lighten(#333, 25%);
-  --live-item-background: lighten(#ccc, 15%);
+  &{
+    --body-background: #fff;
+    --sidebar-background: #282c34;
+    --sidebar-font-color: #fff;
+    --font-color: #333;
+    --icon-color: lighten(#333, 25%);
+    --live-item-background: lighten(#ccc, 15%);
+  }
 
   /* 暗色 */
   &.theme-dark {
     --body-background: #282c34;
     --sidebar-background: rgb(242, 242, 242);
-    --sidebar-logo-background: rgb(242, 242, 242);
+    --sidebar-font-color: #282c34;
     --font-color: #fff;
     --icon-color: darken(#fff, 25%); // #bfbfbf
     --live-item-background: lighten(#282c34, 15%);
   }
+
+  /* 仿YouTube主题色 */
+  --body-background: hls(0,0%,98%);
+  --sidebar-background: #eee;
+  --sidebar-font-color: #333;
+  --font-color: rgb(63,63,63);
+  --icon-color: lighten(#333, 25%);
+  --live-item-background: #f2f2f2;
 }

@@ -47,7 +47,7 @@
     background: @sidebar-background;
     border-top-right-radius: @radius;
     border-bottom-right-radius: @radius;
-    border: 1px solid #788592;
+    //border: 1px solid #788592;
     border-left: none;
     font-size: 16px;
     line-height: @height;
@@ -55,7 +55,10 @@
     .icon{
       display: inline-block;
       transition: transform 0.2s ease-in-out;
-      color: @sidebar-font-color;
+      color: @icon-color;
+      &:hover{
+        color: @sidebar-font-color;
+      }
       &.closed{
         transform: rotate(180deg);
       }

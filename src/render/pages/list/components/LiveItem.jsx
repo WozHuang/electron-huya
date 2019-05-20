@@ -19,7 +19,7 @@ export default class LiveItem extends React.Component {
     return (
       <div onClick={this.playLive} className={style['wrapper']}>
         <div className={style['poster__wrapper']}>
-          <img className={style['poster']} alt={roomData.introduction} src={roomData.screenshot + screenShotSuffix}/>
+          <img className={style['poster__content']} alt={roomData.introduction} src={roomData.screenshot + screenShotSuffix}/>
         </div>
         <div className={style['bottom']}>
           <div className={style['introduction']}>

@@ -68,7 +68,7 @@ antd中有一条,全局设置盒模型的，这个需要注意一下，以免在
 
 **使用 `less + css var()变量` 做换肤功能：**
 
-见 style/theme.less 文件，其实直接使用var() 也可以，但是这样IDE就没有了代码提示，如果不需要考虑兼容性的话直接上CSS var就可以了，反正现在EDGE也已经支持了，[关于兼容性](https://developer.mozilla.org/zh-CN/docs/Web/CSS/var)，如果考虑兼容性做个🔨换肤，这种功能也是锦上添花罢了。
+见 style/theme.less 文件，其实直接使用var() 也可以，但是这样IDE就没有了代码提示，如果不需要考虑兼容性的话直接上CSS var就可以了，反正现在EDGE也已经支持了，[关于兼容性](https://developer.mozilla.org/zh-CN/docs/Web/CSS/var)，如果考虑兼容性做个🔨换肤，这种功能也是锦上添花罢了。(YouTube主页也整站使用了css var，每一行颜色都写了一个css变量和一个默认的颜色，估计是为了兼容)
 
 **使用iconfont上的图标**
 
@@ -103,6 +103,8 @@ antd中有一条,全局设置盒模型的，这个需要注意一下，以免在
 无边框窗口可拖动区域需要加上drag，中间可操作区域需要no-drag
 
 react-router中非路由组件却需要操作路由的地方需要使用 withRouter 包装
+
+一些异步操作需要在组件卸载时取消掉，避免React报内存泄漏的错误，具体可以在 `componentWillUnmount` 时把this.isMounted这样一个变量设为false来代表已经卸载组件（本来React是有isMounted方法的但是被废弃了，只能自己手动记录）
 
 **感受：**
 
