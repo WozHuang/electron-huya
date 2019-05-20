@@ -21,21 +21,27 @@ class List extends React.Component {
   };
 
   componentDidMount() {
+    this.mounted = true;
     this.getList();
     this.props.toggleSidebar({ status: true });
+  }
+
+  componentWillUnmount() {
+    // 消除组件卸载后异步请求才完成时的警告
+    this.mounted = false;
   }
 
   getList() {
     getLiveList({ pageNo: this.state.page.pageNo })
       .then(data => {
-        this.setState({
+        this.mounted && this.setState({
           liveList: data.list,
           page: data.page,
           loading: false
         }, scrollToTop);
       })
       .catch(() => {
-        this.setState({
+        this.mounted && this.setState({
           loading: false,
           fail: true
         });
