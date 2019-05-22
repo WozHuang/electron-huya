@@ -106,6 +106,24 @@ react-router中非路由组件却需要操作路由的地方需要使用 withRou
 
 一些异步操作需要在组件卸载时取消掉，避免React报内存泄漏的错误，具体可以在 `componentWillUnmount` 时把this.isMounted这样一个变量设为false来代表已经卸载组件（本来React是有isMounted方法的但是被废弃了，只能自己手动记录）
 
+使用 `no-referrer` 保证开发环境和打包后一致都没有referrer 
+```html 
+<meta name="referrer" content="no-referrer">
+```
+
+videoJs在使用hls下载时加上鉴权码 ，参考 [https://github.com/videojs/http-streaming#hlsxhr](https://github.com/videojs/http-streaming#hlsxhr)
+
+```js
+      this.player.tech().hls.xhr.beforeRequest = function (options) {
+        if (options.responseType === "arraybuffer" && options.uri.indexOf('?') === -1) {
+          options.uri += query
+        }
+        return options;
+      };
+```
+
+判断有没有历史记录来决定是否显示返回按钮：react-router没有这个功能，找了很久都没有，现在的判断方式是直接判断当前页面路径是否等于 '/' 来控制是否显示返回按钮
+
 **感受：**
 
 如果UI没有刚需无边框这东西就别弄了，一堆麻烦事，而且window下的标题栏也不是非常丑，还能方便地设置菜单（说的就是你，deepin linux下超丑的标题栏）

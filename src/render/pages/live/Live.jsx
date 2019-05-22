@@ -44,20 +44,21 @@ class Live extends React.Component {
         loading={this.state.loading}
         fail={this.state.fail}
       >
-        {liveData &&
-        <div className={style['wrapper']}>
-          <div className={style['left']}>
-            <div className={style['live-header']}>
-              <LiveHeader liveData={liveData}/>
+        {liveData ?
+          <div className={style['wrapper']}>
+            <div className={style['left']}>
+              <div className={style['live-header']}>
+                <LiveHeader liveData={liveData}/>
+              </div>
+              <div className={style['live-body']}>
+                <LiveBody liveData={liveData}/>
+              </div>
             </div>
-            <div className={style['live-body']}>
-              <LiveBody liveData={liveData}/>
+            <div className={style['right']}>
+              <BarrageList liveData={liveData}/>
             </div>
           </div>
-          <div className={style['right']}>
-            <BarrageList liveData={liveData}/>
-          </div>
-        </div>
+          : <div>loading...</div>
         }
       </Loading>
     );

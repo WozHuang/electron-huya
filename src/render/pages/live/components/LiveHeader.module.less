@@ -1,13 +1,80 @@
 @import "~@/render/mixin.less";
 
 .wrapper {
+  height: 70px;
   .flex(row);
+  .opacity();
 }
 
 .left {
-  float: left;
+  width: 0;
+  flex: 1;
 }
 
+.introduction {
+  font-size: 22px;
+  height: 40px;
+  line-height: 40px;
+  //background: palevioletred;
+}
+
+.profile{
+  height: 30px;
+  //background: aquamarine;
+  line-height: 30px;
+
+  > span {
+    display: inline-block;
+    margin-right: 20px;
+  }
+
+  &__avatar {
+    width: 24px;
+    height: 24px;
+    margin: 3px;
+    border-radius: 50%;
+    vertical-align: top;
+  }
+
+  &__icon{
+    margin-right: 3px;
+    &.icon-category{
+      font-size: 0.9em;
+    }
+    &.icon-id{
+      font-size: 1.3em;
+      position: relative;
+      top: 2px;
+    }
+  }
+}
+
+
 .right {
-  width: 60px;
+  min-width: 80px;
+  margin: 5px;
+  position: relative;
+}
+
+.subscribe {
+  //height: 100%;
+  width: 100%;
+  padding: 5px;
+  background: @main-color;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 14px;
+  color: #fff;
+  .flex(column);
+  user-select: none;
+  cursor: pointer;
+  .absolute-center();
+
+  &__status {
+    border-bottom: 1px solid #fff;
+  }
+
+  &__icon{
+    font-size: 1.1em;
+  }
 }

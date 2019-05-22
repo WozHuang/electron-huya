@@ -10,6 +10,8 @@
 @sidebar-background: var(--sidebar-background);
 @sidebar-font-color: var(--sidebar-font-color);
 
+@main-color: #fa8c16;
+
 // 减去顶部标题栏后剩余的高度
 @title-bar-height: 60px;
 
@@ -61,4 +63,15 @@
   word-break: break-all;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: @line-number;
+}
+
+.absolute-center(){
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.opacity(){
+  //opacity: 0.03;
 }

@@ -1,20 +1,21 @@
 @import "~@/render/mixin.less";
 
 .wrapper {
+  height: calc(100vh - @title-bar-height);
   .flex(row);
 }
 
 .left {
   width: 0;
-  height: calc(100vh - @title-bar-height);
+  height: 100%;
   flex: 1;
   margin-right: 8px;
-  background: lighten(lightblue,15%);
+  //background: lighten(lightblue,15%);
 
   .flex(column);
   .live-header{
     //height: 60px;
-    background: lighten(mediumpurple,25%);
+    //background: lighten(mediumpurple,25%);
   }
   .live-body{
     height: 0;
@@ -24,6 +25,6 @@
 
 .right {
   width: 300px;
-  height: calc(100vh - @title-bar-height);
-  background: lighten(lightpink,10%);
+  height: 100%;
+  //background: lighten(lightpink,10%);
 }
