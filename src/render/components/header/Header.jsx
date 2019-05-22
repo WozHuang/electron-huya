@@ -35,10 +35,11 @@ class Header extends React.Component {
   };
 
   menu = () => {
-    window.electron.remote.dialog.showMessageBox({
-      message: '这个功能还没开发呢嘤嘤嘤',
-      title: '提示'
-    });
+    // window.electron.remote.dialog.showMessageBox({
+    //   message: '这个功能还没开发呢嘤嘤嘤',
+    //   title: '提示'
+    // });
+    window.electron.remote.getCurrentWindow().webContents.findInPage('周星星')
   };
 
   render() {

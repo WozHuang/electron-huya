@@ -23,3 +23,15 @@ export function getLiveData({ profileRoom }) {
     }
   });
 }
+
+/**
+ *
+ * @param profileRoom
+ */
+export function getNotice({ profileRoom }) {
+  return request.get('/getNotice', {
+    params: {
+      host: profileRoom
+    }
+  });
+}

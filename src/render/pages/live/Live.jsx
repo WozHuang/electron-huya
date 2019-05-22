@@ -12,8 +12,9 @@ class Live extends React.Component {
   state = {
     loading: true,
     fail: false,
-    liveData: null
   };
+  liveData = null;
+  noticeServer = null;
 
   componentDidMount() {
     this.props.toggleSidebar({ status: false });
@@ -24,8 +25,8 @@ class Live extends React.Component {
   getLiveData() {
     getLiveData({ profileRoom: this.profileRoom })
       .then(data => {
+        this.liveData = data;
         this.setState({
-          liveData: data,
           loading: false
         });
       })
@@ -35,10 +36,11 @@ class Live extends React.Component {
           fail: true
         });
       });
+
   }
 
   render() {
-    const liveData = this.state.liveData;
+    const liveData = this.liveData;
     return (
       <Loading
         loading={this.state.loading}
