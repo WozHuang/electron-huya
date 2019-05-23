@@ -122,6 +122,10 @@ videoJs在使用hls下载时加上鉴权码 ，参考 [https://github.com/videoj
       };
 ```
 
+**React 滚动位置恢复的官方说明**
+
+[Scroll Restoration](https://reacttraining.com/react-router/web/guides/scroll-restoration)
+
 判断有没有历史记录来决定是否显示返回按钮：react-router没有这个功能，找了很久都没有，现在的判断方式是直接判断当前页面路径是否等于 '/' 来控制是否显示返回按钮
 
 **感受：**

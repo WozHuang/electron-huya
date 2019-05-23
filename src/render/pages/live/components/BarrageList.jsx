@@ -1,6 +1,7 @@
 import React from 'react';
 import style from './BarrageList.module.less';
 import propTypes from 'prop-types';
+import BarrageItem from "@/render/pages/live/components/components/BarrageItem";
 
 export default class BarrageList extends React.Component {
   static propTypes = {
@@ -34,7 +35,7 @@ export default class BarrageList extends React.Component {
       <ul className={style['list']}>
         {
           this.state.messageList.map(item => (
-            <li key={item.time}>{item.content}</li>
+            <li key={item.time}><BarrageItem message={item}/></li>
           ))
         }
       </ul>

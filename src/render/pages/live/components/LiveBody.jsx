@@ -21,7 +21,7 @@ export default class LiveBody extends React.Component {
 
   streamList = [];
   rateList = [];
-  rate = 500;
+  rate = 4000;
 
   componentDidMount() {
     this.player = videoJs(this.playerContainer.current, {
@@ -43,11 +43,15 @@ export default class LiveBody extends React.Component {
 
   }
 
+  componentWillUnmount() {
+    this.player.dispose();
+  }
+
   play(i = 1) {
     const stream = this.streamList[i];
     const query = `?ratio=${this.rate}&${stream.sHlsAntiCode}`;
     // const flvSrc = `${stream.sFlvUrl}/${stream.sStreamName}.${stream.sFlvUrlSuffix}?ratio=500&${stream.sFlvAntiCode}`;
-    const hlsSrc = `${stream.sHlsUrl}/${stream.sStreamName}.${stream.sHlsUrlSuffix}${query}`;
+    const hlsSrc = `${stream.sHlsUrl}/${stream.sStreamName}_${this.rate}.${stream.sHlsUrlSuffix}${query}`;
 
     this.player.src(hlsSrc);
     this.player.ready(() => {

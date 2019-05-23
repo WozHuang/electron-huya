@@ -2,16 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import style from './LiveItem.module.less';
 import MyIcon from "@/render/components/myIcon/MyIcon";
-import {withRouter} from 'react-router-dom';
 
-@withRouter
 class LiveItem extends React.Component {
   static propTypes = {
-    liveData: PropTypes.object.isRequired
+    liveData: PropTypes.object.isRequired,
+    onPlay: PropTypes.func
   };
 
   playLive = () => {
-    this.props.history.push(`/live/${this.props.liveData.profileRoom}`);
+    this.props.onPlay(this.props.liveData.profileRoom);
   };
 
   render() {
