@@ -7,6 +7,7 @@ import {toggleSidebar} from "@/render/store/setting/action";
 import LiveHeader from "@/render/pages/live/components/LiveHeader";
 import LiveBody from "@/render/pages/live/components/LiveBody";
 import BarrageList from "@/render/pages/live/components/BarrageList";
+import HuyaSocket from "@/render/api/HuyaSocket";
 
 class Live extends React.Component {
   state = {
@@ -14,7 +15,7 @@ class Live extends React.Component {
     fail: false,
   };
   liveData = null;
-  noticeServer = null;
+  socket = null;
 
   componentDidMount() {
     this.props.toggleSidebar({ status: false });
@@ -22,10 +23,15 @@ class Live extends React.Component {
     this.getLiveData();
   }
 
+  componentWillUnmount() {
+    this.socket.close();
+  }
+
   getLiveData() {
     getLiveData({ profileRoom: this.profileRoom })
       .then(data => {
         this.liveData = data;
+        this.connectSocket();
         this.setState({
           loading: false
         });
@@ -36,28 +42,35 @@ class Live extends React.Component {
           fail: true
         });
       });
+  }
 
+  connectSocket() {
+    const profileRoom = this.liveData.TT_ROOM_DATA.profileRoom;
+    this.socket = new HuyaSocket({ profileRoom });
   }
 
   render() {
-    const liveData = this.liveData;
+    const prop = {
+      liveData: this.liveData,
+      socket: this.socket
+    };
     return (
       <Loading
         loading={this.state.loading}
         fail={this.state.fail}
       >
-        {liveData ?
+        {prop.liveData ?
           <div className={style['wrapper']}>
             <div className={style['left']}>
               <div className={style['live-header']}>
-                <LiveHeader liveData={liveData}/>
+                <LiveHeader {...prop}/>
               </div>
               <div className={style['live-body']}>
-                <LiveBody liveData={liveData}/>
+                <LiveBody {...prop}/>
               </div>
             </div>
             <div className={style['right']}>
-              <BarrageList liveData={liveData}/>
+              <BarrageList {...prop}/>
             </div>
           </div>
           : <div>loading...</div>
