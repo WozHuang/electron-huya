@@ -4,6 +4,7 @@ import videoJs from 'video.js';
 import 'video.js/dist/video-js.css';
 import zhCN from 'video.js/dist/lang/zh-CN.json';
 import PropTypes from "prop-types";
+import BarrageLauncher from "@/render/pages/live/components/BarrageLauncher";
 
 videoJs.addLanguage('zh-CN', zhCN);
 videoJs.options.lang = 'zh-CN';
@@ -70,8 +71,9 @@ export default class LiveBody extends React.Component {
   render() {
     return (
       <div className={style['wrapper']} data-vjs-player>
+        <BarrageLauncher {...this.props}/>
         <video className={`${style['video']} video-js`} ref={this.playerContainer}/>
-        <div className={style['control']}>123</div>
+        {/*<div className={style['control']}>123</div>*/}
       </div>
     );
   }

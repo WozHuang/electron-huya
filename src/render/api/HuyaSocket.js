@@ -40,6 +40,7 @@ export default class HuyaSocket extends EventEmitter {
     socket.onmessage = (event) => {
       const json = JSON.parse(event.data);
       if (json.statusCode === 200) {
+        json.data.time = Date.now();
         this.emit('message', json.data);
       } else {
         // 错误处理

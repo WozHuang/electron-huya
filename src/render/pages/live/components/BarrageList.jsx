@@ -19,15 +19,25 @@ export default class BarrageList extends React.Component {
 
   // 新增信息，只显示最新的100条
   addMessage(msg) {
+    const element = this.el.current;
     const list = this.state.messageList.slice(-100);
-    list.push(Object.assign(msg, { time: Date.now() }));
+    list.push(msg);
+    const isAtBottom = this.isAtBottom();
     this.setState({
       messageList: list
     }, () => {
-      // 直接设置一个必定大于 scrollHeight 的值即可滚动到底部
-      // 避免读取scrollHeight 造成回流
-      this.el.current.scrollTop = 999999;
+      if(isAtBottom){
+        element.scrollTop = 999999;
+        // 直接设置一个必定大于 scrollHeight 的值即可滚动到底部
+        // 避免读取scrollHeight 再次造成回流
+      }
     });
+  }
+
+  // 判断目前列表是否已经滚动到了最下面
+  isAtBottom(){
+    const element = this.el.current;
+    return (element.scrollTop + element.clientHeight) === element.scrollHeight;
   }
 
   render() {

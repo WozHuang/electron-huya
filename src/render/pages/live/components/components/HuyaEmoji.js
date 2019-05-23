@@ -252,6 +252,7 @@ const emojiContext = require.context('./emoji/', false, /\.png$/);
 window.emojiContext = emojiContext;
 function getEmoji(key) {
   let src;
+  // 如果能找到就返回本地的图片，不能就去CDN取
   try {
     src = emojiContext(`./${key}.png`);
   } catch (err) {
