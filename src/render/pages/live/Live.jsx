@@ -24,7 +24,7 @@ class Live extends React.Component {
   }
 
   componentWillUnmount() {
-    this.socket.close();
+    this.socket && this.socket.close();
   }
 
   getLiveData() {
