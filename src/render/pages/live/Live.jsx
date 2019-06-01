@@ -24,6 +24,7 @@ class Live extends React.Component {
   }
 
   componentWillUnmount() {
+    this.props.toggleSidebar({ status: true });
     this.socket && this.socket.close();
   }
 
